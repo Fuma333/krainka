@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<style>
+    body {
+        margin: 0;
+    }
+
+    #sky2.day {
+        background-color: skyblue;
+    }
+    #sky2.morning{
+        background: rgb(135,206,235);
+        background: linear-gradient(180deg, rgba(135,206,235,1) 20%, rgba(255,172,116,1) 88%);
+    }
+
+    #sky2.evening{
+        background: rgb(47,129,162);
+        background: linear-gradient(180deg, rgba(47,129,162,1) 20%, rgba(255,172,116,1) 88%);
+    }
+
+    #sky2.night {
+        background-color: #26566a;
+    }
+
+    div#sky, div#sky2 {
+        height: 100vh;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+    div#sky2 {
+      position: absolute;
+      top: 0;
+    }
+
+
+    div#sky {
+        z-index: 2;
+    }
+    div#sky2 {
+        z-index: 1;
+    }
+    div#control {
+        position: relative;
+        z-index: 8;
+    }
+    .ground {
+        position: absolute;
+        bottom: 0;
+        background-image: url(images/ground.jpg);
+        height: 100px;
+        width: 100%;
+        z-index: 7;
+    }
+    .house {
+        position: absolute;
+        bottom: 100px;
+        left: 50%;
+        z-index: 9;
+    }
+    .sun {
+        position: absolute;
+        max-width: 400px;
+        z-index: 1;
+    }
+    .cloud {
+        position: absolute;
+        max-width: 400px;
+        z-index: 2;
+    }
+</style>
+</head>
+<body>
+
+<div id="control">
+    <input id="hours" type="number" value="12"  onchange="generateEnviroment()"/>
+    <button onclick="generateEnviroment()">
+        generuj prostredie
+    </button>
+    <br>
+    <select id="sky-objets">
+        <option value="">Vyber objekt</option>
+        <option value="cloud1">Oblak</option>
+        <option value="airplane">Lietadlo</option>
+        <option value="ballon">Balon</option>
+    </select>
+    <input class="add-object" id="top-objets" type="text" value="" placeholder="napis top poziciu"/>
+    <input class="add-object" id="left-objets" type="text" value="" placeholder="napis left poziciu"/>
+    <button onclick="addObject()">
+        vloz objekt
+    </button>
+    <button onclick="generateSkyObjects()">
+        generuj objekty na oblohe
+    </button>
+    <button onclick="removeObjects()">
+        vymaz vsetky objekty
+    </button>
+
+    <div id="list-objects">
+
+    </div>   
+
+</div>
+
+<img class="house" src="images/house.png"/>
+<div id="sky">
+
+</div>
+<div id="sky2">
+
+</div>
+<div class="ground">
+</div>
+
+<script src="js/sky.js"></script>
+
+</body>
+</html>
